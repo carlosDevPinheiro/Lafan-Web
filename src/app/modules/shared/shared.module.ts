@@ -20,7 +20,12 @@ import { CarouselComponent } from './carousel/carousel.component';
     AlbunsPhotosComponent, 
     CarouselComponent
   ],
-  exports:[HeadbarComponent]
+  exports:[
+    HeadbarComponent,
+    FooterComponent,
+    CarouselComponent,
+    AlbunsPhotosComponent
+  ]
   
 })
 export class SharedModule { }

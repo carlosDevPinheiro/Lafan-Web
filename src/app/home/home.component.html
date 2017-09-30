@@ -1,1 +1,35 @@
 <app-headbar></app-headbar>
+
+<div class="container background-lafan" style="padding-top:6em;">
+    <div class="row ">
+        
+        <!-- **** Texto Introdutorio **** -->
+        <div class="col-12 col-md-4 border text-white animated slideInLeft" style="background-color:#f241f2;">
+            <p class="lead">Bem Vindo</p>
+            <h3 class="display-5"><span class="font-lafan">Lafan Cabelo & Cia</span> </h3>
+            <p class="lead">Temos o compromisso de oferecer ao nossos clientes os melhores serviços, com as melhores tecnicas utilizadas
+                no mercado acompanhamos as tendencias de um mundo moderno e inovador e para que nossos clientes tenham uma
+                experiencia com excelencia e satisfação.
+            </p>
+            <hr class="my-4">
+            <p>
+                <button type="button" routerLink="/novo-usuario" class="btn btn btn-outline-dark btn-lg btn-block"> Cadastre-se</button>
+            </p>
+        </div>
+
+        <div class="col-12 col-md-8 animated slideInRight">
+            <!-- **** Component Carousel **** -->
+            <app-carousel></app-carousel>
+            <!-- **** FIM Carousel **** -->
+        </div>
+    </div>
+
+    <br>
+    <!-- ****  Component Galeria de Fotos **** -->
+    <app-albuns-photos></app-albuns-photos>
+    <!-- ****  FIM da Galeria **** -->
+
+   
+  </div>
+   <!-- **** Component footer **** -->
+   <app-footer></app-footer>
