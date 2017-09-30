@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-md fixed-top animated slideInDown" id="headbar-background">
+  <a class="navbar-brand" href="/home">
+       <span class="font-lafan text-white"> Lafan Cabelo & Cia </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-hamburguer" aria-controls="menu-hamburguer"
+    aria-expanded="false" aria-label="Toggle navigation" style="margin-right:1em">
+             <span class="fa fa-bars fa-2x" ></span>
+   </button>
+
+  <div class="collapse navbar-collapse" id="menu-hamburguer">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link text-white" href="#">Agenda <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" routerLink="/loja" href="#">Loja</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" id="menu-servicos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicos</a>
+        <div class="dropdown-menu" aria-labelledby="menu-servicos">
+          <a class="dropdown-item" href="#">Cabelos</a>
+          <a class="dropdown-item" href="#">Manicure e Pedicure</a>
+          <a class="dropdown-item" href="#">Sobrancelhas</a>
+          <a class="dropdown-item" href="#">Depilação Corporal</a>
+        </div>
+      </li>
+      <li class="">
+        <a class="nav-link text-white" routerLink="/cart">
+          <!-- &nbsp; => espaço em branco  -->
+          <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>&nbsp;<sup>(&nbsp;{{ totalItems }}&nbsp;) </sup>
+        </a>
+      </li>
+    </ul>
+
+
+    <!-- Botão Logado-->
+    <div class="btn-group" *ngIf="user.email">
+      <span class=" nav-link text-white mr-3"> Bem Vindo(a)!</span>
+      <button type="button" id="buttonLogin" class="btn  btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         {{ user.name }}
+    </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" routerLink="/detalhes-usuario">Perfil</a>
+        <a class="dropdown-item" href="#">Pedidos</a>
+        <a class="dropdown-item" href="#">Agenda</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" id="button-logout" (click)="logout()">Logout</a>
+      </div>
+    </div>
+
+    <!-- informções em Logout -->
+    <form class="form-inline text-white" *ngIf="!user.email">
+      <i class="fa fa-user-circle-o fa-2x"></i>
+      <a class="nav-link text-white" routerLink="/login"> Login</a>
+    </form>
+
+  </div>
+</nav>

@@ -1,0 +1,22 @@
+#headbar-background {
+    background-color: #320132;
+}
+a#button-logout {
+   cursor: pointer;
+}
+a#button-logout:hover {
+    cursor: pointer;
+    color: white;
+ }
+
+#buttonLogin{
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 30px;
+}
+
+.dropdown-item:hover {
+    background-color: #8A1E8A;
+    color: white;
+}
