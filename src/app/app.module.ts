@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -23,6 +23,7 @@ import { CartService } from './cart/cart.service';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     appRouting,
     SharedModule
   ],

@@ -1,3 +1,62 @@
-<p>
-  cart works!
-</p>
+
+ <app-headbar></app-headbar>
+ <div class="container">    
+     <h3 class="font-italic">Seu carrinho contem {{ products.length }} itens</h3>
+     <table class="table table-hover">
+       <thead>
+         <tr>
+           <th>Photo</th>
+           <th>Informações do Produto</th>
+           <th>Total</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let prod of products">
+           <td class="td-photo">
+             <img class="img-fluid img-thumbnail" src="{{ prod.image }}" width="200px" height="auto">
+           </td>
+           <td class="td-content">
+             <ul class="list-unstyled list-inline">
+               <li><strong> {{ prod.name }} </strong> </li>
+               <li> R$ {{ prod.price | number:'1.2-2' }} </li>
+               <li>
+                 <input type="number" min="1" name="quant" [(ngModel)]="prod.quant" (change)="checkQuantity(prod)"> 
+                 <button type="button" (click)="removeProduct(prod)" class="btn btn-danger btn-sm mt-1">Remover </button>
+               </li>
+             </ul>
+           </td>
+           <td class="text-left p-2"> {{ prod.quant * prod.price | currency:'BRL':true }} </td>
+         </tr>
+         <tr>
+           <td> SubTotal</td>
+           <td colspan="2" class="text-right"> R$
+             <h5>{{ getTotal() | number:'1.2-2'}}</h5>
+           </td>
+         </tr>
+         <tr>
+           <td colspan="2" class="text-left">Desconto</td><td> {{ descount | currency:'BRL':true }}</td>
+         </tr>
+         <tr>
+           <td colspan="2"class="text-left">Taxa de Entrega</td><td> {{ deliveryFee | currency:'BRL':true }}</td>
+         </tr>
+         <tr>
+             <td> Total do Pedido</td>
+             <td colspan="2" class="text-right"> R$
+               <h3><strong>{{ (getTotal() + deliveryFee + descount) | number:'1.2-2'}}</strong></h3>
+             </td>
+         </tr>
+       </tbody>
+     </table>
+     
+     <div class="d-flex flex-row justify-content-around flex-wrap ">
+         <select  class="col-10 col-sm-10 form-control form-control-sm " name="selectedValue" [(ngModel)]="selectedValue">                   
+             <option *ngFor="let p of payments" [ngValue]="p.number">{{ p.name }}</option>
+           </select>
+                  
+         <a id="#btnCheckout" (click)="checkout()" class="col-10 col-sm-10 btn btn-primary btn-lg animated pulse infinite m-2"
+         [ngClass]="{'disabled':selectedValue == 8 || (selectedValue < 0 && selectedValue > 7)  }" role="button" >Checkout</a>
+         <small *ngIf="selectedValue == 8" class="col-12 col-sm-12 col-md-6 alert alert-warning m text-center">Para desbloquear o botão selecione e forma de pagamento</small>
+        
+     </div>
+ 
+ </div>

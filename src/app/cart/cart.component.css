@@ -1,0 +1,59 @@
+
+#btnCheckout:hover{
+    cursor: pointer;
+ }
+ 
+ .container {
+     margin-top: 6em;  
+     background: linear-gradient( to bottom, white, violet 60%);
+ }
+ 
+ h3 {
+     text-shadow: 1px 3px 5px;
+     display: block;
+ }
+ 
+ .td-photo {
+     width: 30%;    
+ }
+ 
+ td {
+  vertical-align: middle;
+  text-align: center;
+ }
+ 
+ .td-content {
+     width: 50%;  
+     overflow: hidden;
+     text-align: left;
+ }
+ 
+ img {
+     text-align: center;  
+ }
+ 
+ .td-content ul > li > input {
+     width:3em;
+     border-radius: 25%;
+     text-align: center;
+     outline: 0;   
+ }
+ 
+ @media (max-width: 575px) { 
+     
+     .td-photo :hover {
+         transform: scale(0.7);
+         position: absolute;
+         left: 1em;
+         text-align: center;
+         transition: 1s;
+         width: 400px;
+         height: auto;
+       }
+       
+  };
+ 
+ 
+ 
+ 
+ 
