@@ -1,3 +1,39 @@
-<p>
-  store works!
-</p>
+<app-headbar></app-headbar>
+<div class="container-fluid">
+  <div class="d-flex flex-row flex-wrap">
+    <h3 class="col-12 col-sm-12 col-md-4"><em>Bem Vindo a</em></h3>
+    <span class="col-12 col-sm-12 col-md-6 font-lafan">Loja Lafan </span>
+  </div>
+  <div class="container">
+    <div class="d-flex flex-row  d-flex justify-content-center flex-wrap">
+      <ul class="list-unstyled list-inline" *ngFor="let prod of products">
+        <li class="col-sm-4 p-2">
+          <div class="card">
+            <!-- <img class="card-img-top img-fluid img-thumbnail" src="{{ prod.image }}" alt=""> -->
+            <img class="card-img-top img-fluid img-thumbnail" src="assets/img/produtos-loja.jpg" >
+
+            <div class="card-body">
+              <h4 class="card-title"> {{ prod.name.substring(0,16) }} </h4>
+              <p class="card-text"> {{ prod.description.substring(0,21) }}</p>
+              <h4 class="text-muted">R$ {{ prod.price | number:'1.2-2' }}</h4>
+              <button (click)="addToCart(prod)" class="btn btn-primary">Adicionar <i class="fa fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="row div-bottuns">
+      <button type="button" *ngIf="skip > 0" (click)="getLessProducts()"  class="btn-home col-12 col-sm-8 col-md-3 btn-direction-left"> 
+        <i class="fa fa-arrow-right fa-2x fa-rotate-180"></i> </button>
+      <button  type="button" (click)="getProductsHome()" class="btn-home col-12 col-sm-8 col-md-3">
+        <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+      </button>
+
+      <button  type="button" *ngIf="products.length > 7" 
+         (click)="getMoreProducts()" class="btn-home col-12 col-sm-8 col-md-3 btn-direction-rigth" >
+         <i class="fa fa-arrow-right fa-2x"></i> 
+      </button> 
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
