@@ -1,0 +1,37 @@
+/* a referencia do elemento pai esta declarada no css do index */
+.container-fluid {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url("/assets/img/fundo-navegador.png"); 
+    background-repeat: no-repeat;   
+    height: calc(100%);
+}
+
+.lafan {
+    height: 100%;
+}
+
+.card {   
+    background-color: transparent;
+    border: 1px solid #3DB7EC;
+    transition: 0.6s ease-in;
+    width: 21rem;
+    border: 2px solid #F00992;
+    border-radius: 2em;
+        
+}
+
+.card:hover {
+    background-color:white;   
+}
+
+.card-link:hover {
+    color: #0FF4A1;
+}
+
+#emailHelp {
+    color: white;
+}
+button#buttonModal {
+    display: none;
+}
+
+

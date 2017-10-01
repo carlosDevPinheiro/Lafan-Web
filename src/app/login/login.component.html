@@ -1,3 +1,65 @@
-<p>
-  login works!
-</p>
+<div class="container-fluid">
+  <div class="d-flex flex-column  justify-content-center lafan">
+    <div class="d-flex flex-row justify-content-center">
+      <div class="card">
+        <div class="card-body text-center ">
+          <h4 class="card-title text-white">Login</h4>
+          <form [formGroup]="form" #myForm="ngForm" (ngSubmit)="SubmitForm(myForm)">
+            <div class="form-group">
+
+              <!-- Campo Email -->
+              <div class="input-group">
+                <input formControlName="email" type="email" class="form-control" 
+                [ngClass]="{
+                  'is-invalid':(!form.controls.email.valid && !form.controls.email.pristine),
+                  'is-valid':form.controls.email.valid }" placeholder="Enter email">
+                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-envelope"></i></span>
+              </div>
+             </div>
+
+             <!-- Campo Password  -->
+            <div class="form-group">
+              <div class="div input-group">
+                <input formControlName="password" type="password" class="form-control"
+                 [ngClass]="{
+                    'is-invalid':(!form.controls.password.valid && !form.controls.password.pristine),
+                    'is-valid':form.controls.password.valid }" placeholder="Password">
+                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-key"></i></span>
+              </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-outline-info" [disabled]="!form.valid">Confirmar</button>
+                <button type="button" routerLink="/home" class="btn btn-outline-secondary ml-2"> Home </button>
+            </div>
+            <br>
+          </form>
+          <small id="emailHelp" class="form-text text-muted"> Ainda não é Cadastrado ? 
+               <a  class="card-link" routerLink="/novo-usuario"> Registre-se </a>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button" id="buttonModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"></button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Resultado </h5>
+      </div>      
+      <div class="modal-body alert alert-danger" role="alert">
+        <h4 class="alert-heading">Ops's Ocorreu um erro </h4>
+         Suas informações de de login estão incorretas, verifique e tente novamente.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn  btn-primary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

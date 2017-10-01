@@ -1,0 +1,43 @@
+
+
+.card {
+    width:40rem;; 
+    background: transparent; 
+    color:white;
+    text-align: center;
+    border: 0px;
+}
+
+
+h2 {
+    margin-top: 2em;   
+    color: white;
+    filter:drop-shadow(0px 0px 3px #E806E8);
+    font-family: 'Tangerine', cursive;
+    font-size: 3.5em;
+}
+
+span#basic-addon2 {
+    background-color: violet;       
+}
+
+button#buttonModal {
+    display: none;
+}
+
+.fa .fa-exclamation-triangle {
+    background-color:  yellow;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

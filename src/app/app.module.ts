@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule  } from '@angular/http';
 
@@ -15,6 +15,8 @@ import { CartComponent } from './cart/cart.component';
 import { CartService } from './cart/cart.service';
 import { AppDataService } from './app.data.service';
 
+import { UserModule } from './modules/user/user.module';
+
 @NgModule({
   declarations: [
     AppComponent,   
@@ -27,8 +29,11 @@ import { AppDataService } from './app.data.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    ReactiveFormsModule,
     appRouting,
-    SharedModule
+    SharedModule,
+    UserModule,
+    
   ],
   providers: [CartService, AppDataService],
   bootstrap: [AppComponent]

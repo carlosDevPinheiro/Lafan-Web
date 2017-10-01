@@ -1,0 +1,104 @@
+<div class="container- background-lafan">
+  <div class="d-flex flex-column  justify-content-center lafan">
+    <div class="d-flex flex-row justify-content-center">
+      <div class="card col-12 col-sm-12 col-md-6 mt-2">
+        <h2>Novo Registro</h2>
+        <div class="card-body">
+          <form #myForm="ngForm">
+
+            <!-- campo Nome -->
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control text-capitalize" minlength="1" name="name" [(ngModel)]="user.name" #nameVariable="ngModel"
+                  [ngClass]="{
+                   'is-valid': nameVariable.valid,
+                   'is-invalid': !nameVariable.valid && (nameVariable.dirty || nameVariable.touched)}" placeholder="Digite seu Nome"
+                  required>
+                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
+              </div>
+            </div>
+
+            <!-- campo Email -->
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control text-lowercase" name="email" [(ngModel)]="user.email" #emailVariable="ngModel" [ngClass]="{
+                     'is-valid': emailVariable.valid,
+                     'is-invalid': !emailVariable.valid && (emailVariable.dirty || emailVariable.touched)}" placeholder="Digite email"
+                  required pattern="^([a-z].*\w+)@.*(\.com(.br)?|.net)$" email>
+
+                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              </div>
+            </div>
+
+            <!-- campo Password -->
+            <div class="form-group">
+              <div class="input-group">
+                <input type="password" class="form-control" minlength="6" maxlength="32" name="password" [(ngModel)]="user.password" #passwordVariable="ngModel"
+                  [ngClass]="{
+                     'is-valid': passwordVariable.valid,
+                     'is-invalid': !passwordVariable.valid && (passwordVariable.dirty || passwordVariable.touched)}" placeholder="Digite sua Senha"
+                  required>
+
+                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-keyboard-o" aria-hidden="true"></i></span>
+              </div>
+            </div>
+
+            <!-- campo ConfirmPassword -->
+            <div class="form-group">
+              <div class="input-group">
+                <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="user.confirmPassword" #confirmVariable="ngModel"
+                  [ngClass]="{
+                  'is-valid': user.confirmPassword === user.password ,
+                  'is-invalid': user.confirmPassword != user.password  && (confirmVariable.dirty || confirmVariable.touched)}"
+                  placeholder="Confirme a Senha" required>
+                <span class="input-group-addon" id="basic-addon2"><i class="fa fa-keyboard-o" aria-hidden="true"></i></span>
+              </div>
+            </div>
+            <div class="row justify-content-around">
+              <div class="col-12 col-sm-12 col-md-4 p-2">
+
+                <button type="button" [disabled]="!myForm.valid || user.confirmPassword != user.password" (click)="submit()" class="btn btn-outline-success btn-block text-white">Salvar</button>
+              </div>
+              <div class="col-12 col-sm-12 col-md-4 p-2">
+                <button type="button" (click)="login()" class="btn btn-outline-danger btn-block text-white">Login</button>
+              </div>
+              <div class="col-12 col-sm-12 col-md-4 p-2">
+                <button type="button" (click)="clear()" class="btn btn-outline-info btn-block text-white">Limpar</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<app-footer></app-footer>
+<!-- Button trigger modal -->
+<button type="button" id="buttonModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"></button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Resultado </h5>
+      </div>
+      <div *ngIf="status" class="modal-body alert alert-success" role="alert">
+        <h4 class="alert-heading">Sucesso </h4>
+        <h6 id="contentModal">Resultado</h6>
+        <hr>
+        <p class="mb-0">Obrigado por se Cadastrar em nosso sistema ;-) </p>
+      </div>
+      <div *ngIf="!status" class="modal-body alert alert-danger" role="alert">
+        <h4 class="alert-heading">Corrija os Erros</h4>
+        <ul class="list-unstyled">
+          <li *ngFor="let erro of erros"> {{erro.value}} <span><i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i></span></li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn  btn-primary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
