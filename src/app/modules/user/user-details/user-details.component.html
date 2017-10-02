@@ -1,0 +1,111 @@
+<div class="container background-lafan">
+
+  <!-- Accordion user  -->
+  <div id="accordion" role="tablist" class="col-12 mt-4">
+    <div class="card">
+      <div class="card-header" role="tab" id="headingOne">
+        <h5 class="mb-0">
+          <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Informações de Cadastro
+          </a>
+        </h5>
+      </div>
+
+
+      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          <div class="card background-lafan">
+            <div class="card-body">
+              <label for="">Nome</label>
+              <h1><em>{{ user?.name }}</em></h1>
+              <label for="">Email Cadastrado</label>
+              <p class="lead">{{ user?.email }}</p>
+              <label for="">Data Registro</label>
+              <p class="lead"> {{ user?.dateRegister | date:'dd/MM/y' }}</p>
+              <label for="">Ultima Atualização </label>
+              <p class="lead"> {{ user?.dateChange | date:'dd/MM/y' }}</p>
+              <label for=""> Perfil do Usuario </label>
+              <p class="lead"> {{ user?.profileTxt}}</p>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex flex-row justify-content-between flex-wrap">
+                <button type="button" routerLink="/atualizar-usuario" [queryParams]="user" class="btn btn-outline-secondary btn-block col-12 col-sm-12 col-md-3">Atualizar</button>
+                <button type="button" class="btn btn-outline-danger btn-block col-12 col-sm-12 col-md-3">Remover</button>
+                <button type="button" routerLink="/home" class="btn btn-outline-info btn-block col-12 col-sm-12 col-md-3">Voltar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" role="tab" id="headingTwo">
+        <h5 class="mb-0">
+          <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Informações adicionais
+          </a>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body background-lafan">
+          <div class="card background-lafan">
+            <div class="card-body">
+              <button *ngIf="showBtnCustomer" (click)="getCustomer()" class="btn btn-success mb-2">Carregar Informções</button><br>
+
+              <label for="">Documento</label>
+              <h3><em>{{ customer?.document }}</em></h3>
+              <label for="">Data Nascimento</label>
+              <p class="lead">{{ customer?.dateBirthday | date }}</p>
+              <label for="">Data Registro</label>
+              <p class="lead"> {{ customer?.dateRegister | date:'dd/MM/y' }}</p>
+              <label for="">Ultima Atualização </label>
+              <p class="lead"> {{ customer?.dateChange | date:'dd/MM/y' }}</p>
+              <label for=""> Telefone: </label>
+              <p class="lead"> {{ customer?.phone}}</p>
+
+            </div>
+            <div class="card-footer">
+              <div class="d-flex flex-row justify-content-between flex-wrap">
+                <button type="button" routerLink="/atualizar-usuario" [queryParams]="user" class="btn btn-outline-secondary btn-block col-12 col-sm-12 col-md-3">Atualizar</button>
+                <button type="button" routerLink="/home" class="btn btn-outline-info btn-block col-12 col-sm-12 col-md-3">Voltar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIM Informações de Address  -->
+      </div>
+    </div>
+    <div class="card background-lafan">
+      <div class="card-header" role="tab" id="headingThree">
+        <h5 class="mb-0">
+          <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Enderecos
+          </a>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+        <div class="card-body background-lafan">
+          <button *ngIf="showBtnAddress" (click)="getAddress()" class="btn btn-success mb-2">Mostrar Endereco(s)</button><br>
+          <div *ngIf="(!showBtnAddress && showBtnCustomer)" class="alert alert-warning"> Carregue as informações adicionais primeiro</div>      
+          <ul class="list-unstyled">
+            <li *ngFor="let addr of listAddress">
+              <div class="card border-secondary mb-3" style="max-width: 40rem;">
+                <div class="card-header">Endereco</div>
+                <div class="card-body text-secondary">                            
+                  <h4 class="card-title" *ngIf="addr.addressId == customer?.addressFirst">Principal</h4>
+                  <p class="card-text"> {{ addr.street }}, {{ addr.number }}&nbsp;&nbsp;{{ addr.complement }}&nbsp;&nbsp;{{ addr.district }} </p>
+                  <p class="card-text"> {{ addr.city }}&nbsp;&nbsp;{{ addr.state | uppercase }}&nbsp;&nbsp; {{ addr.cep }} </p> 
+                  <button type="button" class="btn btn-primary btn-sm">Atualizar</button>
+                  <button type="button" class="btn btn-danger btn-sm">Remover</button>
+                </div>
+                </div>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FIM  Accordion Customer  -->
+
+  </div>

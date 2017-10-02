@@ -4,8 +4,10 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { UserNewComponent } from './user-new/user-new.component';
-import { UserRoutingModule } from './user.routing.module';
+import { UserRoutingModule } from './user.routing';
 import { SharedModule } from '../shared/shared.module';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   imports: [
@@ -14,6 +16,6 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     SharedModule
   ],
-  declarations: [UserNewComponent]
+  declarations: [UserNewComponent, UserEditComponent, UserDetailsComponent]
 })
 export class UserModule { }
