@@ -47,9 +47,13 @@ export class UserDetailsComponent implements OnInit {
       var user = JSON.parse(localStorage.getItem("lafan.user"));
       if(user){
         this.serviceUsuario.getCustomer(user.id).subscribe( result => {
+         if(result.success){
           this.customer = result.data;
           this.showBtnCustomer = false;
-          this.showBtnAddress = true;                      
+          this.showBtnAddress = true;
+         } else {
+           console.log(result)
+         }                     
         });
       }
     }
