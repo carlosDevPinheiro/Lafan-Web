@@ -1,3 +1,58 @@
-<p>
-  address works!
-</p>
+<div class="d-flex">
+  <fieldset>
+    <form #myForm="ngForm" class="form-inline">
+      <div class="form-row">
+
+        <!-- campo cep -->
+        <div class="form-inline">
+          <div class="form-group">
+            <input lafanMask="99999-999" (change)="exportAddress()" [(ngModel)]="_address.cep" name="cep" type="text" class="form-control m-2"
+              placeholder="cep">
+            <button (click)="getAddress()" class="btn btn-success btn-sm ml-2">Buscar endereço</button>
+          </div>
+        </div>
+
+        <div class="row ml-2">
+          <!-- campo Street -->
+          <input #streetVariable="ngModel" (change)="exportAddress()" [(ngModel)]="_address.street" name="street" type="text" class="form-control col-10 col-sm-10 col-md-10  "
+            placeholder="Rua" required
+            [ngClass]="{
+              'is-valid':streetVariable.valid,
+              'is-invalid': !streetVariable.valid && (streetVariable.dirty || streetVariable.touched)
+            }">
+          <i *ngIf="(streetVariable.valid)" class=" fa fa-check col-2 col-sm-2  col-md-2" aria-hidden="true"></i>
+
+          <!-- campo Number -->
+          <input #numberVariable="ngModel" (change)="exportAddress()" [(ngModel)]="_address.number" name="number" (change)="exportAddress()"
+            min="1" type="number" class="form-control col-md-10 col-sm-10 col-10" placeholder="Numero" required
+          [ngClass]="{
+            'is-valid': numberVariable.valid,
+            'is-invalid': !numberVariable.valid && (numberVariable.dirty || numberVariable.touched)
+          }" >
+          <i *ngIf="(numberVariable.valid)" class=" col-md-2 col-sm-2 col-2 fa fa-check" aria-hidden="true"></i>
+
+          <!-- campo Complement  -->
+          <input #complementVariable="ngModel" (change)="exportAddress()" [(ngModel)]="_address.complement" name="complement" (change)="exportAddress()"
+            type="text" class="form-control  col-10 col-sm-10 col-md-10" placeholder="Complemento (opcional)" maxlength="50">
+          <i *ngIf="(complementVariable.valid)" class=" col-md-2  col-sm-2 col-2 fa fa-check" aria-hidden="true"></i>
+
+          <!-- campo District -->
+          <input #districtVariable="ngModel" (change)="exportAddress()" [(ngModel)]="_address.district" name="district" type="text"
+            class="form-control col-10 col-sm-10 col-md-10" placeholder="Bairro" minlength="5" maxlength="50" required>
+          <i *ngIf="(districtVariable.valid)" class=" col-md-2 col-sm-2 col-2 fa fa-check" aria-hidden="true"></i>
+
+          <!-- campo city -->
+          <input #cityVariable="ngModel" (change)="exportAddress()" [(ngModel)]="_address.city" name="city" type="text" class="form-control  col-10 col-sm-10 col-md-10"
+            placeholder="Cidade" minlength="3" maxlength="50" required>
+          <i *ngIf="(cityVariable.valid)" class="col-2 col-sm-2 col-md-2 fa fa-check" aria-hidden="true"></i>
+
+          <!-- campo state -->
+          <input #stateVariable="ngModel" (change)="exportAddress()" [(ngModel)]="_address.state" name="state" type="text" class="form-control  col-10 col-sm-10 col-md-10"
+            placeholder="Estado" minlength="2" maxlength="50" required>
+          <i *ngIf="(stateVariable.valid)" class=" col-md-2 col-sm-2 col-2 fa fa-check" aria-hidden="true"></i>
+        </div>
+
+      </div>
+    </form>
+  </fieldset>
+</div>

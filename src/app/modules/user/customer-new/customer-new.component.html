@@ -1,0 +1,36 @@
+<div class="container background-lafan pb-2">
+
+  <form class="col-12 col-sm-12 col-md-8 mt-4">
+    <!-- campo Document  -->
+    <div class="form-group">     
+      <input type="text" class="form-control" id="document" aria-describedby="doclHelp" placeholder="CPF" required>
+      <small id="docHelp" class="form-text text-muted">Digite apenas numeros</small>
+    </div>
+
+    <!-- campo DateBirdthday  -->
+    <div class="form-group">
+     
+      <label for="dateBirthday"></label>
+      <input type="date" class="form-control" id="dateBirthday" aria-describedby="datelHelp" placeholder="data nascimento" required>
+      <small id="dateHelp" class="form-text text-muted">Digite apenas numeros</small>
+    </div>
+
+    <!-- campo Phone  -->
+    <div class="form-group">     
+      <input type="text" class="form-control" id="phone" aria-describedby="phoneHelp" placeholder="digite o telefone" required>
+      <small id="phoneHelp" class="form-text text-muted">Digite apenas numeros</small>
+    </div>
+   
+    <select class="form-control" name="selectedValue" [(ngModel)]="selectedValue">
+      <option [ngValue]="false">Feminino</option>
+      <option [ngValue]="true">Masculino</option>    
+    </select>
+<br>
+    <app-address (address)="getAddress($event)"></app-address>
+    <div class="row ml-2">
+        <button (click)="teste()" type="submit" class="col-12 col-sm-12 col-md-3 btn btn-primary m-2">Submit</button>
+        <button (click)="teste()" type="button" class="col-12 col-sm-12 col-md-3 btn btn-warning m-2">Limpar</button>
+        <button (click)="teste()" type="button" class="col-12 col-sm-12 col-md-3 btn btn-secundary m-2">Voltar</button>
+    </div>
+  </form>
+</div>

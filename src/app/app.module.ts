@@ -16,6 +16,8 @@ import { CartService } from './cart/cart.service';
 import { AppDataService } from './app.data.service';
 
 import { UserModule } from './modules/user/user.module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { UserModule } from './modules/user/user.module';
     appRouting,
     SharedModule,
     UserModule,
-    
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [CartService, AppDataService],
   bootstrap: [AppComponent]
