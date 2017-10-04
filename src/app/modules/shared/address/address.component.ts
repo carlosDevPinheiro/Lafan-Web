@@ -16,12 +16,13 @@ export class AddressComponent implements OnInit {
   public _address: Address = new Address();
   @Output('address') addressVaue = new EventEmitter();
   
+ 
   constructor(private _service: Http) { }
 
   ngOnInit() {
   }
 
-  exportAddress(){   
+  exportAddress(){    
     this.addressVaue.emit(this._address);
   }
 

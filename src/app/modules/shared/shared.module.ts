@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule  } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { HeadbarComponent } from './headbar/headbar.component';
@@ -16,7 +16,7 @@ import { LafanMaskDirective } from './directives/lafan-mask.directive';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule,
+    FormsModule,   
     HttpModule
   ],
   declarations: [
@@ -24,14 +24,16 @@ import { LafanMaskDirective } from './directives/lafan-mask.directive';
     FooterComponent, 
     AddressComponent, 
     AlbunsPhotosComponent, 
-    CarouselComponent, LafanMaskDirective
+    CarouselComponent,
+    LafanMaskDirective
   ],
   exports:[
     HeadbarComponent,
     FooterComponent,
     CarouselComponent,
     AlbunsPhotosComponent,
-    AddressComponent
+    AddressComponent,
+    LafanMaskDirective
   ]
   
 })

@@ -23,36 +23,48 @@ export class UserService {
             .map((resp: Response) => resp.json());
     }
 
-    editUser(obj:any){
+    editUser(obj: any) {
         let token = localStorage.getItem('lafan.token');
-        let header = new Headers({'Content-Type':'application/json'});
-        header.append('Authorization',`Bearer ${token}`); Headers
-        let options = new RequestOptions({ headers: header});
+        let header = new Headers({ 'Content-Type': 'application/json' });
+        header.append('Authorization', `Bearer ${token}`); Headers
+        let options = new RequestOptions({ headers: header });
 
-        return this.http.put(this.serviceUrl+'v1/users',obj,options)
-        .map((resp: Response) => resp.json());
+        return this.http.put(this.serviceUrl + 'v1/users', obj, options)
+            .map((resp: Response) => resp.json());
     }
 
-    getCustomer(id:string){
+    getCustomer(id: string) {
         let token = localStorage.getItem('lafan.token');
-        if(!token) { return;}
+        if (!token) { return; }
 
-        let header = new Headers({'Content-Type':'application/json'});
-        header.append('Authorization',`Bearer ${token}`); Headers
-        let options = new RequestOptions({ headers: header});
-       
-        return this.http.get(this.serviceUrl +`v1/customer/${id}/user`,options )
-            .map((resp:Response) => resp.json());
+        let header = new Headers({ 'Content-Type': 'application/json' });
+        header.append('Authorization', `Bearer ${token}`); Headers
+        let options = new RequestOptions({ headers: header });
+
+        return this.http.get(this.serviceUrl + `v1/customer/${id}/user`, options)
+            .map((resp: Response) => resp.json());
     }
 
-    getAddress(id:string){
+    getAddress(id: string) {
         let token = localStorage.getItem('lafan.token');
-        if(!token){ return;}
+        if (!token) { return; }
 
-        let header = new Headers({'Content-Type':'application/json'});
-        header.append('Authorization',`Bearer ${token}`); Headers
-        let options = new RequestOptions({ headers: header});
+        let header = new Headers({ 'Content-Type': 'application/json' });
+        header.append('Authorization', `Bearer ${token}`); Headers
+        let options = new RequestOptions({ headers: header });
         return this.http.get(this.serviceUrl + `v1/customer/${id}/address-list`, options)
-                .map((resp:Response) => resp.json());
+            .map((resp: Response) => resp.json());
+    }
+
+    postCustomer(customer: any) {
+        // console.log(customer);
+        let token = localStorage.getItem('lafan.token');
+        if (!token) { return; }
+
+        let header = new Headers({ 'Content-Type': 'application/json' });
+        header.append('Authorization', `Bearer ${token}`); Headers
+        let options = new RequestOptions({ headers: header });
+        return this.http.post(this.serviceUrl + 'v1/customer',customer,options)
+            .map((resp:Response) => resp.json());
     }
 }

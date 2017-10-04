@@ -1,23 +1,33 @@
 <div class="container background-lafan pb-2">
 
-  <form class="col-12 col-sm-12 col-md-8 mt-4">
+  <form #myForm="ngForm" class="col-12 col-sm-12 col-md-8 mt-4">
     <!-- campo Document  -->
     <div class="form-group">     
-      <input type="text" class="form-control" id="document" aria-describedby="doclHelp" placeholder="CPF" required>
+      <input lafanMask="999.999.999-99" #documentVariable="ngModel" [(ngModel)]="customer.document" name="document"  type="text" class="form-control" id="document" aria-describedby="doclHelp" placeholder="CPF" 
+      [ngClass]="{
+        'is-valid':documentVariable.valid,
+        'is-invalid': !documentVariable.valid && (documentVariable.dirty || documentVariable.touched)
+      }" required>
       <small id="docHelp" class="form-text text-muted">Digite apenas numeros</small>
     </div>
 
     <!-- campo DateBirdthday  -->
-    <div class="form-group">
-     
-      <label for="dateBirthday"></label>
-      <input type="date" class="form-control" id="dateBirthday" aria-describedby="datelHelp" placeholder="data nascimento" required>
+    <div class="form-group">      
+      <input #dateBirthday="ngModel" [(ngModel)]="customer.dateBirthday" name="dateBirthday" type="date" class="form-control" id="dateBirthday" aria-describedby="datelHelp" placeholder="data nascimento"
+       [ngClass]="{
+         'is-valid': dateBirthday.valid,
+         'is-invalid': !dateBirthday.valid && (dateBirthday.dirty || dateBirthday.touched)
+       }"  required>
       <small id="dateHelp" class="form-text text-muted">Digite apenas numeros</small>
     </div>
 
     <!-- campo Phone  -->
     <div class="form-group">     
-      <input type="text" class="form-control" id="phone" aria-describedby="phoneHelp" placeholder="digite o telefone" required>
+      <input #phoneVariable="ngModel"  lafanMask="(99)99999-9999" [(ngModel)]="customer.phone" name="phone" type="text" class="form-control" id="phone" aria-describedby="phoneHelp" placeholder="digite o telefone"
+      [ngClass]="{
+          'is-valid': phoneVariable.valid,
+          'is-invalid': !phoneVariable.valid && (phoneVariable.dirty || phoneVariable.touched)
+      }"  required>
       <small id="phoneHelp" class="form-text text-muted">Digite apenas numeros</small>
     </div>
    
@@ -26,11 +36,11 @@
       <option [ngValue]="true">Masculino</option>    
     </select>
 <br>
-    <app-address (address)="getAddress($event)"></app-address>
-    <div class="row ml-2">
-        <button (click)="teste()" type="submit" class="col-12 col-sm-12 col-md-3 btn btn-primary m-2">Submit</button>
-        <button (click)="teste()" type="button" class="col-12 col-sm-12 col-md-3 btn btn-warning m-2">Limpar</button>
-        <button (click)="teste()" type="button" class="col-12 col-sm-12 col-md-3 btn btn-secundary m-2">Voltar</button>
+   
+    <div class="row ml-2 justify-content-center">
+        <app-address (address)="getAddress($event)"></app-address>
+        <button (click)="submitCstomer()" [disabled]="!myForm.valid" type="submit" class="col-12 col-sm-12 col-md-3 btn btn-primary m-2">Enviar</button>
+        <button  type="button" class="col-12 col-sm-12 col-md-3 btn btn-secundary m-2">Voltar</button>
     </div>
   </form>
 </div>
