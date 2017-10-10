@@ -11,6 +11,8 @@ import { AddressComponent } from './address/address.component';
 import { AlbunsPhotosComponent } from './albuns-photos/albuns-photos.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { LafanMaskDirective } from './directives/lafan-mask.directive';
+import { LafanCpfPipe } from './pipes/lafan-cpf.pipe';
+import { LafanPhonePipe } from './pipes/lafan-phone.pipe';
 
 @NgModule({
   imports: [
@@ -25,7 +27,9 @@ import { LafanMaskDirective } from './directives/lafan-mask.directive';
     AddressComponent, 
     AlbunsPhotosComponent, 
     CarouselComponent,
-    LafanMaskDirective
+    LafanMaskDirective,
+    LafanCpfPipe,
+    LafanPhonePipe
   ],
   exports:[
     HeadbarComponent,
@@ -33,7 +37,9 @@ import { LafanMaskDirective } from './directives/lafan-mask.directive';
     CarouselComponent,
     AlbunsPhotosComponent,
     AddressComponent,
-    LafanMaskDirective
+    LafanMaskDirective,
+    LafanCpfPipe,
+    LafanPhonePipe
   ]
   
 })

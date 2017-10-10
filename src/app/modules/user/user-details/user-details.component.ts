@@ -20,6 +20,8 @@ export class UserDetailsComponent implements OnInit {
   public showBtnCustomer:boolean = true;
   public showBtnAddress:boolean=false;
 
+
+
   public listAddress = [];
   
     constructor(private serviceUsuario: UserService,private toastr: ToastrService , private route: Router ) { }
