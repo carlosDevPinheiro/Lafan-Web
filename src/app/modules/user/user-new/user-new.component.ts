@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppDataService } from '../../../app.data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-new',
@@ -10,51 +12,66 @@ import { Router } from '@angular/router';
 export class UserNewComponent implements OnInit {
 
   private form: FormGroup;
-  private erros:any[] = [];
-  private status = true;  
-  
-    user  = {
-      name:"",
-      email:"",
-      password:"",
-      confirmPassword:"",
-      id:""     
-  }   
+  private erros: any[] = [];
+  private status = true;
 
-  constructor(private router: Router) {  }
+  user = {
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    id: ""
+  }
 
-   ngOnInit() {    
-   }
-   submit() { 
+  constructor(private _router: Router, private _dataService: AppDataService, private _toastr: ToastrService) { }
 
-    //  this.dataService.createUser(this.user).subscribe(result => {
-      
-    //     if(result.success){       
-    //       this.status = result.success;
-    //       document.getElementById('contentModal').innerHTML = result.data ;
-    //       var element = document.getElementById('buttonModal');         
-    //       element.click();
-    //       this.clear();
-    //     }
-    //     else {
+  ngOnInit() {
+   
+  }
+  submit() {
 
-    //      this.status = result.success;
-    //      this.erros = result.error;
-    //      var element = document.getElementById('buttonModal');
-    //      element.click();         
-    //     }       
-        
-    //   });
-   }
+    this._dataService.createUser(this.user).toPromise()
 
-   clear(){
+      .then((result: any) => {
+        console.log(result);
+        if (result.success) {
+          this.status = result.success;
+          document.getElementById('contentModal').innerHTML = result.data;
+          var element = document.getElementById('buttonModal');
+          element.click();
+          this.clear();
+          
+        }
+        else if (!result.success) {
+          if (typeof result.data === "undefined") {
+            console.log('Lista de erros');
+            this.status = result.success;
+            this.erros = result.error;
+            var element = document.getElementById('buttonModal');
+            element.click();
+          }
+          else if (typeof result.error === "undefined") {
+            this._toastr.warning(`${result.data}`, 'Atenção !!');
+          }
+          else {
+              return;
+          }
+        }
+      })
+      .catch((erro: any) => {
+        //console.log(erro);        
+        this._toastr.error(`${erro._body}`, `Erro: ${erro.status} - ${erro.statusText}`);
+      });
+  }
+
+  clear() {
     this.user.confirmPassword = "";
     this.user.password = "";
     this.user.name = "";
     this.user.email = "";
-   }
+  }
 
-   login(){
-      this.router.navigateByUrl("/login");
-   }
+  login() {
+    this._router.navigateByUrl("/login");
+  }
 }

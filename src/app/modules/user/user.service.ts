@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
@@ -19,9 +20,19 @@ export class UserService {
         header.append('Authorization', `Bearer ${token}`); Headers
         let optinos = new RequestOptions({ headers: header });
 
-        return this.http.get(this.serviceUrl + `v1/users/${id}`, optinos)
-            .map((resp: Response) => resp.json());
+        // return this.http.get(this.serviceUrl + `v1/users/${id}`, optinos)
+        //     //.map((resp: Response) => resp.json());
+         return this.http.get(this.serviceUrl + `v1/users/${id}`, optinos)        
+        .toPromise()
+        .then(response => response.json())
+        .catch((erro:Response) => {
+           // console.log(erro);
+            return erro;           
+        });       
+          
     }
+
+   
 
     editUser(obj: any) {
         let token = localStorage.getItem('lafan.token');

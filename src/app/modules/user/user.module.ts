@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { CustomerNewComponent } from './customer-new/customer-new.component';
+import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,12 @@ import { CustomerNewComponent } from './customer-new/customer-new.component';
     FormsModule,
     SharedModule
   ],
-  declarations: [UserNewComponent, UserEditComponent, UserDetailsComponent, CustomerNewComponent]
+  declarations: [
+    UserNewComponent,
+    UserEditComponent, 
+    UserDetailsComponent, 
+    CustomerNewComponent, 
+    CustomerEditComponent
+  ]
 })
 export class UserModule { }

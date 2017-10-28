@@ -1,3 +1,60 @@
-<p>
-  user-edit works!
-</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8 col-md-8 text-center">
+      <h2 class="font-lafan">Atualizar Informações</h2>
+      <form #myForm="ngForm">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" minlength="5" required class="form-control" placeholder="Digite seu Nome" aria-label="" aria-describedby="basic-addon2"
+              [(ngModel)]="user.name" #nameVariable="ngModel" name="name" [ngClass]="{
+              'is-invalid': !nameVariable.valid && nameVariable.touched,
+              'is-valid': nameVariable.valid }">
+            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group">
+            <input type="email" email class="form-control" placeholder="Digite seu email" aria-label="" aria-describedby="basic-addon2"
+              [(ngModel)]="user.email" #emailVariable="ngModel" name="email" [ngClass]="{
+              'is-invalid': !emailVariable.valid &&  emailVariable.touched,
+              'is-valid': emailVariable.valid }" required pattern="^([a-z].*\w+)@.*(\.com(.br)?|.net)$">
+            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <input type="password" minlength="6" maxlength="32" class="form-control" placeholder="Digite sua Senha" aria-label="password"
+              aria-describedby="basic-addon2" [(ngModel)]="user.password" #passwordVariable="ngModel" name="password" [ngClass]="{
+              'is-invalid': !passwordVariable.valid &&  passwordVariable.touched,
+              'is-valid': passwordVariable.valid }">
+            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-keyboard-o" aria-hidden="true"></i></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group">
+            <input type="password" minlength="6" required class="form-control" placeholder="Confirme a Senha" aria-label="password" aria-describedby="basic-addon2"
+              [(ngModel)]="user.confirmPassword" #confirmPasswordVariable="ngModel" name="confirmPassword" [ngClass]="{
+              'is-invalid': user.password != user.confirmPassword,
+              'is-valid': user.password === user.confirmPassword}">
+            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-keyboard-o" aria-hidden="true"></i></span>
+          </div>
+        </div>
+      </form>
+      <div>
+        <div class="row justify-content-around">
+          <div class="col-12 col-sm-12 col-md-4 p-2">
+            <button type="button" (click)="UpdateUser()" [disabled]="!myForm.valid || user.password != user.confirmPassword" class="btn btn-outline-success btn-block">Salvar</button>
+          </div>
+          <div class="col-12 col-sm-12 col-md-4 p-2">
+            <button type="button" routerLink="/detalhes-usuario" class="btn btn-outline-danger btn-block">Cancelar</button>
+          </div>
+          <div class="col-12 col-sm-12 col-md-4 p-2">
+            <button type="button" (click)="clear()" class="btn btn-outline-info btn-block">Limpar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

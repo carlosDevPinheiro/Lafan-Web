@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+//import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+
 
 @Injectable()
 export class AppDataService {
@@ -24,6 +27,12 @@ export class AppDataService {
       getProducts(skip:number,take:number){
           return  this.http.get(this.serviceUrl + "product/"+ skip +"/"+take+"/"+true)
                   .map((res: Response) => res.json());
+      }
+
+      createUser(obj:any){
+         
+        return this.http.post(this.serviceUrl +'users',obj)
+            .map((resp:Response) => resp.json())
       }
 
 }

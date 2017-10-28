@@ -19,7 +19,6 @@ export class HeadbarComponent implements OnInit {
      // console.log(products);
       this.totalItems = products.length;
     });
-
     this.cartService.load();
   }
 
@@ -43,7 +42,8 @@ export class HeadbarComponent implements OnInit {
 
   logout(){      
       localStorage.removeItem('lafan.user');
-      localStorage.removeItem('lafan.token');     
+      localStorage.removeItem('lafan.token');
+      localStorage.removeItem('lafan.cart');     
       window.location.reload();
   }
 
