@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-//import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 
@@ -14,7 +14,7 @@ export class AppDataService {
      
   
       authenticate(obj: any) {
-          // console.log(obj);
+        //    console.log(obj);
   
           var dt = "grant_type=password&email=" + obj.email + "&password=" + obj.password;
           let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });

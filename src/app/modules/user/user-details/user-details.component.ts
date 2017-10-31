@@ -56,6 +56,7 @@ export class UserDetailsComponent implements OnInit {
         this.customer = result.data;
         this.showBtnCustomer = false;
         this.showBtnAddress = true;
+        console.log(result);
       } else {
          console.log(result);         
         this.toastr.error("Nao ha registros de Informações adicionais, 'Op's");

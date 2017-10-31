@@ -11,21 +11,25 @@ export class LafanPhonePipe implements PipeTransform {
       value = value.toString();
       if (value.length == 10) {
         // fixo
-        value = value.concat(
+        var result = value.concat(
           '(', value.substring(0, 2), ')', value.substr(3, 5), '-', value.substring(value.length - 4));
-        value = value.slice(10);
-        value = value.replace(')', ') ');
-        return value;
+        result = result.slice(10);
+        result = result.replace(')', ') ');
+
+        console.log(result);
+        return result;
+
       } else if (value.length == 11) {
         // celular
-        value = value.concat(
+        var result = value.concat(
           '(', value.substring(0, 2), ')', value.substr(2, 5), '-', value.substring(value.length - 4));
-        value = value.slice(11);
-        value = value.replace(')', ') ');
-        return value;
+        result = result.slice(11);
+        result = result.replace(')', ') ')
+        
+        return result;
       }
     }
-    return null;
+    return value;
   }
 
 } 

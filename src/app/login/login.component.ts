@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
    
   SubmitForm(form:NgForm) {
      //console.log(this.form.value);
-    this.dataService.authenticate('this.form.value').subscribe(result => {
+    this.dataService.authenticate(this.form.value).subscribe(result => {
       if(result.success){
           this.user = {          
             id:result.user.id,
